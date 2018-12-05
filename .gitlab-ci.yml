@@ -3,10 +3,6 @@ image: docker:stable
 services:
   - docker:dind
 
-stages:
-  - build
-  - push
-
 variables:
   IMAGE_10_ALPINE_TAG: 10-alpine
   IMAGE_11_ALPINE_TAG: 11-alpine
@@ -20,24 +16,38 @@ before_script:
   - export NOW_TIMESTAMP=$(date +'%Y%m%d%H%M%S')
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN git.sitesoft.ru:4567
 
-images building:
+node 10:
   stage: build
   only:
     refs:
       - master
   script:
     - docker build --tag "$CONTAINER_IMAGE:$IMAGE_10_ALPINE_TAG" -f ./dockerfiles/Dockerfile.10-alpine ./dockerfiles
-    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_11_ALPINE_TAG" -f ./dockerfiles/Dockerfile.11-alpine ./dockerfiles
-    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_ALPINE_TAG" -f ./dockerfiles/Dockerfile.alpine ./dockerfiles
-    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_LATEST_TAG" -f ./dockerfiles/Dockerfile.latest ./dockerfiles
+    - docker push "$CONTAINER_IMAGE:$IMAGE_10_ALPINE_TAG"
 
-push image (latest):
-  stage: push
+node 11:
+  stage: build
   only:
     refs:
       - master
   script:
-    - docker push "$CONTAINER_IMAGE:$IMAGE_10_ALPINE_TAG"
+    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_11_ALPINE_TAG" -f ./dockerfiles/Dockerfile.11-alpine ./dockerfiles
     - docker push "$CONTAINER_IMAGE:$IMAGE_11_ALPINE_TAG"
+
+node alpine:
+  stage: build
+  only:
+    refs:
+      - master
+  script:
+    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_ALPINE_TAG" -f ./dockerfiles/Dockerfile.alpine ./dockerfiles
     - docker push "$CONTAINER_IMAGE:$IMAGE_ALPINE_TAG"
+
+node latest:
+  stage: build
+  only:
+    refs:
+      - master
+  script:
+    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_LATEST_TAG" -f ./dockerfiles/Dockerfile.latest ./dockerfiles
     - docker push "$CONTAINER_IMAGE:$IMAGE_LATEST_TAG"
