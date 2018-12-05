@@ -26,10 +26,10 @@ images building:
     refs:
       - master
   script:
-    - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_10_ALPINE_TAG)" -f ./dockerfiles/Dockerfile.10-alpine ./dockerfiles
-    - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_11_ALPINE_TAG)" -f ./dockerfiles/Dockerfile.11-alpine ./dockerfiles
-    - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_ALPINE_TAG)" -f ./dockerfiles/Dockerfile.alpine ./dockerfiles
-    - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_LATEST_TAG)" -f ./dockerfiles/Dockerfile.latest ./dockerfiles
+    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_10_ALPINE_TAG" -f ./dockerfiles/Dockerfile.10-alpine ./dockerfiles
+    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_11_ALPINE_TAG" -f ./dockerfiles/Dockerfile.11-alpine ./dockerfiles
+    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_ALPINE_TAG" -f ./dockerfiles/Dockerfile.alpine ./dockerfiles
+    - docker build --tag "$CONTAINER_IMAGE:$IMAGE_LATEST_TAG" -f ./dockerfiles/Dockerfile.latest ./dockerfiles
 
 push image (latest):
   stage: push
@@ -37,7 +37,7 @@ push image (latest):
     refs:
       - master
   script:
-    - docker push "$(CONTAINER_IMAGE):$(IMAGE_10_ALPINE_TAG)"
-    - docker push "$(CONTAINER_IMAGE):$(IMAGE_11_ALPINE_TAG)"
-    - docker push "$(CONTAINER_IMAGE):$(IMAGE_ALPINE_TAG)"
-    - docker push "$(CONTAINER_IMAGE):$(IMAGE_LATEST_TAG)"
+    - docker push "$CONTAINER_IMAGE:$IMAGE_10_ALPINE_TAG"
+    - docker push "$CONTAINER_IMAGE:$IMAGE_11_ALPINE_TAG"
+    - docker push "$CONTAINER_IMAGE:$IMAGE_ALPINE_TAG"
+    - docker push "$CONTAINER_IMAGE:$IMAGE_LATEST_TAG"
