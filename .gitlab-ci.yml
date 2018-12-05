@@ -22,8 +22,9 @@ before_script:
 
 images building:
   stage: build
-  except:
-    - master
+  only:
+    refs:
+      - master
   script:
     - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_10_ALPINE_TAG)" -f ./dockerfiles/Dockerfile.10-alpine ./dockerfiles
     - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_11_ALPINE_TAG)" -f ./dockerfiles/Dockerfile.11-alpine ./dockerfiles
