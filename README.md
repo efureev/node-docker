@@ -32,8 +32,8 @@ Tag name | Details | Full image name | Dockerfile
 `10-alpine` | ![Size][badge_size_10_alpine] | `feugene/node:10-alpine` | [link][dockerfile_10_alpine]
 `11-alpine`  | ![Size][badge_size_11_alpine]  | `feugene/node:11-alpine`  | [link][dockerfile_11_alpine]
 
-[badge_size_latest]:https://images.microbadger.com/badges/image/tarampampam/node.svg
-[badge_size_alpine]:https://images.microbadger.com/badges/image/tarampampam/node:alpine.svg
+[badge_size_latest]:https://images.microbadger.com/badges/image/feugene/node.svg
+[badge_size_alpine]:https://images.microbadger.com/badges/image/feugene/node:alpine.svg
 [badge_size_10_alpine]:https://images.microbadger.com/badges/image/feugene/node:10-alpine.svg
 [badge_size_11_alpine]:https://images.microbadger.com/badges/image/feugene/node:11-alpine.svg
 
@@ -47,7 +47,7 @@ $ docker run --rm \
     --volume "$PWD:/app" \
     --workdir "/app" \
     --user "$(id -u):$(id -g)" \
-    tarampampam/node:10-alpine \
+    feugene/node:10-alpine \
     npm install
 ```
 
@@ -56,7 +56,7 @@ Or using with `docker-compose.yml`:
 ```yml
 services:
   node:
-    image: tarampampam/node:11-alpine
+    image: feugene/node:11-alpine
     volumes:
     - ./src:/app:rw
     working_dir: /app
