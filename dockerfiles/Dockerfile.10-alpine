@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:10-alpine
 
 RUN set -xe \
     && apk add --update --no-cache bash git openssh yarn
