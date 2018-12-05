@@ -5,6 +5,7 @@ services:
 
 stages:
   - build
+  - push
 
 variables:
   IMAGE_10_ALPINE_TAG: 10-alpine
@@ -29,8 +30,8 @@ images building:
     - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_ALPINE_TAG)" -f ./dockerfiles/Dockerfile.alpine ./dockerfiles
     - docker build --tag "$(CONTAINER_IMAGE):$(IMAGE_LATEST_TAG)" -f ./dockerfiles/Dockerfile.latest ./dockerfiles
 
-build and push image (latest):
-  stage: build
+push image (latest):
+  stage: push
   only:
     refs:
       - master

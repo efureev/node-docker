@@ -19,6 +19,7 @@ Installed applications list:
 - `git`
 - `bash`
 - `openssh`
+- `yarn`
 
 > Page on `hub.docker.com` can be [found here][link_hub].
 
@@ -26,29 +27,16 @@ Supported tags:
 
 Tag name | Details | Full image name | Dockerfile
 :------: | :-----: | :-------------: | :--------:
-`latest` | ![Size][badge_size_latest] | `tarampampam/node` | [link][dockerfile_latest]
-`alpine` | ![Size][badge_size_alpine] | `tarampampam/node:alpine` | [link][dockerfile_alpine]
-`10.10-alpine` | ![Size][badge_size_10_10_alpine] | `tarampampam/node:10.10-alpine` | [link][dockerfile_10_10_alpine]
-`10.11-alpine` | ![Size][badge_size_10_11_alpine] | `tarampampam/node:10.11-alpine` | [link][dockerfile_10_11_alpine]
-`10.12-alpine` | ![Size][badge_size_10_12_alpine] | `tarampampam/node:10.12-alpine` | [link][dockerfile_10_12_alpine]
-`10.13-alpine` | ![Size][badge_size_10_13_alpine] | `tarampampam/node:10.13-alpine` | [link][dockerfile_10_13_alpine]
-`11.1-alpine`  | ![Size][badge_size_11_1_alpine]  | `tarampampam/node:11.1-alpine`  | [link][dockerfile_11_1_alpine]
+`latest` | ![Size][badge_size_latest] | `feugene/node` | [link][dockerfile_latest]
+`alpine` | ![Size][badge_size_alpine] | `feugene/node:alpine` | [link][dockerfile_alpine]
+`10-alpine` | ![Size][badge_size_10_alpine] | `feugene/node:10-alpine` | [link][dockerfile_10_alpine]
+`11-alpine`  | ![Size][badge_size_11_alpine]  | `feugene/node:11-alpine`  | [link][dockerfile_11_alpine]
 
 [badge_size_latest]:https://images.microbadger.com/badges/image/tarampampam/node.svg
 [badge_size_alpine]:https://images.microbadger.com/badges/image/tarampampam/node:alpine.svg
-[badge_size_10_10_alpine]:https://images.microbadger.com/badges/image/tarampampam/node:10.10-alpine.svg
-[badge_size_10_11_alpine]:https://images.microbadger.com/badges/image/tarampampam/node:10.11-alpine.svg
-[badge_size_10_12_alpine]:https://images.microbadger.com/badges/image/tarampampam/node:10.12-alpine.svg
-[badge_size_10_13_alpine]:https://images.microbadger.com/badges/image/tarampampam/node:10.13-alpine.svg
-[badge_size_11_1_alpine]:https://images.microbadger.com/badges/image/tarampampam/node:11.1-alpine.svg
+[badge_size_10_alpine]:https://images.microbadger.com/badges/image/feugene/node:10-alpine.svg
+[badge_size_11_alpine]:https://images.microbadger.com/badges/image/feugene/node:11-alpine.svg
 
-[dockerfile_latest]:https://github.com/tarampampam/node-docker/blob/master/dockerfiles/Dockerfile.latest
-[dockerfile_alpine]:https://github.com/tarampampam/node-docker/blob/master/dockerfiles/Dockerfile.alpine
-[dockerfile_10_10_alpine]:https://github.com/tarampampam/node-docker/blob/master/dockerfiles/Dockerfile.10.10-alpine
-[dockerfile_10_11_alpine]:https://github.com/tarampampam/node-docker/blob/master/dockerfiles/Dockerfile.10.11-alpine
-[dockerfile_10_12_alpine]:https://github.com/tarampampam/node-docker/blob/master/dockerfiles/Dockerfile.10.12-alpine
-[dockerfile_10_13_alpine]:https://github.com/tarampampam/node-docker/blob/master/dockerfiles/Dockerfile.10.13-alpine
-[dockerfile_11_1_alpine]:https://github.com/tarampampam/node-docker/blob/master/dockerfiles/Dockerfile.11.1-alpine
 
 ## How can I use this?
 
@@ -59,7 +47,7 @@ $ docker run --rm \
     --volume "$PWD:/app" \
     --workdir "/app" \
     --user "$(id -u):$(id -g)" \
-    tarampampam/node:10.10-alpine \
+    tarampampam/node:10-alpine \
     npm install
 ```
 
@@ -68,7 +56,7 @@ Or using with `docker-compose.yml`:
 ```yml
 services:
   node:
-    image: tarampampam/node:10.10-alpine
+    image: tarampampam/node:11-alpine
     volumes:
     - ./src:/app:rw
     working_dir: /app
@@ -79,12 +67,12 @@ services:
 
 MIT. Use anywhere for your pleasure.
 
-[badge_automated]:https://img.shields.io/docker/automated/tarampampam/node.svg?style=flat-square&maxAge=30
-[badge_pulls]:https://img.shields.io/docker/pulls/tarampampam/node.svg?style=flat-square&maxAge=30
-[badge_issues]:https://img.shields.io/github/issues/tarampampam/node-docker.svg?style=flat-square&maxAge=30
-[badge_build]:https://img.shields.io/docker/build/tarampampam/node.svg?style=flat-square&maxAge=30
-[badge_license]:https://img.shields.io/github/license/tarampampam/node-docker.svg?style=flat-square&maxAge=30
+[badge_automated]:https://img.shields.io/docker/automated/feugene/node.svg?style=flat-square&maxAge=30
+[badge_pulls]:https://img.shields.io/docker/pulls/feugene/node.svg?style=flat-square&maxAge=30
+[badge_issues]:https://img.shields.io/github/issues/efureev/node-docker.svg?style=flat-square&maxAge=30
+[badge_build]:https://img.shields.io/docker/build/feugene/node.svg?style=flat-square&maxAge=30
+[badge_license]:https://img.shields.io/github/license/efureev/node-docker.svg?style=flat-square&maxAge=30
 [node-586]:https://github.com/nodejs/docker-node/issues/586
-[link_hub]:https://hub.docker.com/r/tarampampam/node/
-[link_license]:https://github.com/tarampampam/node-docker/blob/master/LICENSE
-[link_issues]:https://github.com/tarampampam/node-docker/issues
+[link_hub]:https://hub.docker.com/r/feugene/node/
+[link_license]:https://github.com/efureev/node-docker/blob/master/LICENSE
+[link_issues]:https://github.com/efureev/node-docker/issues
